@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= song.title
+    h5= song.language
+    p= song.body
+    hr
+    if user 
+        a.btn.btn-default(href='/songs/edit/'+song._id) Edit
+        a.btn.btn-danger.delete-song(href='#', data-id=song._id) Delete 

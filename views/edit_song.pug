@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/songs/edit/'+song._id)
+        #form-group
+            label Title:
+            input.form-control(name='title', type='text', value=song.title)
+        #form-group
+            label Language:
+            input.form-control(name='language', type='text', value=song.language)
+        #form-group
+            label Body:
+            textarea.form-control(name='body')= song.body
+        br
+        input.btn.btn-primary(type='submit', value='Submit')

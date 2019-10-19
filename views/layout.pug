@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        title The Vihreä Könyv
+        link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+
+    body
+        nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+
+            a.navbar-brand(href='/') The App Index
+
+                ul.navbar-nav
+                    li.nav-item
+                    a.nav-link(href='/') Home
+                    if user
+                      li.nav-item
+                      a.nav-link(href='/songs/add') Add Songs
+                ul.nav.navbar-nav.ml-auto
+                    if user 
+                        li 
+                            a(href='/users/logout') Logout
+                    else
+                        li.nav-item 
+                        a.nav-link(href='/users/register') Register
+                        li.nav-item 
+                        a.nav-link(href='/users/login') Login
+        .container
+            != messages('message', locals)
+            if errors   
+                 each error, i in errors 
+                     div(class='alert alert-danger') #{error.msg}
+            br
+            block content
+            br
+            hr
+            footer  
+                p Copyright &copy; 2019
+        
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/main.js')
